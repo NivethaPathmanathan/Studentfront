@@ -1,0 +1,97 @@
+<div class="col-md-11, container" style="margin-top: 100px; background-color:#EEEEEE; color: #2a0240; width: 600px;">
+  <h2 class="text-center" style="margin-top: 70px; color:#141e61">{{isEdit ? 'Edit Student' : 'Add Student'}}</h2>
+  <div class="row">
+    <div class="col-sm-11">
+
+      <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="StudentName"><b>Student Name:</b></label>
+        <input type="StudentName" formControlName="StudentName" placeholder="Student Name" name="StudentName" class="form-control" id="StudentName">
+      </div>
+      <div *ngIf="f.StudentName.invalid && (f.StudentName.dirty || f.StudentName.touched || submitted)">
+      </div>
+     <br/>
+
+      <div class="form-group">
+        <label for="ContactNo"><b>ContactNo:</b></label>
+        <input formControlName="ContactNo" placeholder="Contact No" name="ContactNo" class="form-control" id="ContactNo">
+        <small class="error" *ngIf="f.ContactNo.invalid">
+            <div *ngIf="f.ContactNo.hasError('pattern')" style="color: red;">Only numbers are allowed.</div>
+        </small>
+      </div>
+      <br/>
+
+      <div class="form-group">
+        <label for="Address"><b>Address:</b></label>
+        <input formControlName="Address" placeholder="Address" name="Address" class="form-control" id="Address">
+      </div>
+      <br/>
+
+      <div class="form-group col-sm-6">
+        <label for="DOB"><b>Date of Birth:</b></label><br>
+      <input formControlName="DOB" bsDatepicker placeholder="Select the Date of birth" name="DOB" class="form-control" id="DOB" style="width: 500px;" required>
+      <div class = "error" *ngIf="f.DOB.invalid && f.DOB.touched" style="color: red;">
+        Select Date of birth
+      </div>
+    </div>
+       <br/>
+<!--
+       <div class="radio-inline">
+        <label for="contry"><b>Gender</b></label>
+        <input id="gender" type="radio" name="genderControl" [formGroup]="genderForm" />
+        <label class="radio-label"> Male</label>
+        <input id="gender" type="radio" name="genderControl" [formGroup]="genderForm" />
+        <label class="radio-label">Female</label>
+      </div> -->
+
+      <!-- <div class="form-group">
+        <label for="contry"><b>Department Name</b></label>
+        <select class="form-control" id="Department_Name" formControlName="Department_Name">
+          <option *ngFor="let Dept of Department" [value]="Dept.id">{{Dept.name}}</option>
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label for="DepartmentId"><b>Department Name:</b></label><br>
+      <!-- <select formControlName="DepartmentId" placeholder ="Select Department" name="DepartmentId" id="DepartmentId" class="form-control" style="width:500px" required> -->
+        <select #sel (change)="changed(sel.value)"formControlName="DepartmentId" placeholder ="Select Department" name="DepartmentId" id="DepartmentId" class="form-control" style="width:500px" required>
+        <option *ngFor="let dept of departments" [value]="dept.DepartmentId">
+          {{dept.DepartmentName}}
+        </option>
+        <!-- <pre>Value: {{dept.value}}</pre> -->
+      </select>
+      <div class = "error" *ngIf="f.DepartmentId.invalid && f.DepartmentId.touched">
+        Select Department
+      </div>
+    </div>
+
+      <!-- <div class="form-group">
+        <label for="contry"><b>Course Name</b></label>
+        <select class="form-control" id="Course_Name" formControlName="Course_Name">
+          <option *ngFor="let course of Course" [value]="course.id">{{course.name}}</option>
+        </select>
+      </div> -->
+      <div class="form-group">
+        <label for="CourseId"><b>Course Name:</b></label><br>
+      <select formControlName="CourseId" placeholder ="Select Course" name="CourseId" id="CourseId" class="form-control" style="width:500px" required>
+      <!-- <select #sel (change)="changed(sel.value)"formControlName="CourseId" placeholder ="Select Course" name="CourseId" id="CourseId" class="form-control" style="width:500px" required> -->
+        <option *ngFor="let course of courseList" [value]="course.CourseId">
+          {{course.CourseName}}
+        </option>
+        <!-- <pre>Value: {{course.value}}</pre> -->
+      </select>
+      <div class = "error" *ngIf="f.CourseId.invalid && f.CourseId.touched">
+        Select Course
+      </div>
+    </div>
+
+    <button type="Submit" style="background-color:#141e61; color: #e0d7e6;"><b>{{isEdit ? 'Update' : 'Add Student'}}</b></button>
+
+    <br/>
+      </form>
+      </div>
+      <p style= "text-align:left; padding-left:300px;color:red">
+        Form Status: {{ studentForm.status }}
+      </p>
+  </div>
+</div>
