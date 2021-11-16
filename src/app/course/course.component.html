@@ -1,0 +1,46 @@
+<div class="col-md-11, container" style="margin-top: 100px; background-color:#EEEEEE; color: #2a0240; width: 600px;">
+  <h2 class="text-center" style="margin-top: 70px; color:#141e61">{{isEdit ? 'Edit Course' : 'Add Course'}}</h2>
+  <div class="row">
+    <div class="col-sm-11">
+
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-group">
+        <label for="CourseName"><b>Course Name:</b></label>
+        <input type="CourseName" formControlName="CourseName" placeholder="Course Name" name="CourseName" class="form-control" id="CourseName">
+      </div>
+      <div *ngIf="f.CourseName.invalid && (f.CourseName.dirty || f.CourseName.touched || submitted)">
+      </div>
+     <br/>
+
+      <div class="form-group">
+        <label for="Duration"><b>Duration:</b></label>
+        <input formControlName="Duration" placeholder="Duration" name="Duration" class="form-control" id="Duration">
+        <small class="error" *ngIf="f.Duration.invalid">
+            <div *ngIf="f.Duration.hasError('pattern')" style="color: red;">Only numbers are allowed.</div>
+        </small>
+      </div>
+      <br/>
+
+      <div class="form-group">
+        <label for="DepartmentId"><b>Department Name:</b></label><br>
+        <select formControlName="DepartmentId" placeholder ="Select Department" name="DepartmentId" id="DepartmentId" class="form-control" style="width:500px" required>
+        <option *ngFor="let dept of departments" [value]="dept.DepartmentId">
+          {{dept.DepartmentName}}
+        </option>
+      </select>
+      <div class = "error" *ngIf="f.DepartmentId.invalid && f.DepartmentId.touched">
+        Select Department
+      </div>
+    </div>
+
+    <button type="Submit" style="background-color:#141e61; color: #e0d7e6;"><b>{{isEdit ? 'Update' : 'Add Course'}}</b></button>
+
+    <br/>
+      </form>
+      </div>
+      <p style= "text-align:left; padding-left:300px;color:red">
+        Form Status: {{ courseForm.status }}
+      </p>
+  </div>
+</div>
