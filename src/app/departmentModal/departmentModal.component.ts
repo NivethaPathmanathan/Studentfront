@@ -2,18 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { from } from 'rxjs';
 import { first } from 'rxjs/operators';
-import { DepartmentModalComponent } from '../departmentModal/departmentModal.component';
-import { Department } from '../model/department.model';
-import { DepartmentService } from '../services/department.service';
+import { Department } from 'src/app/model/department.model';
+import { DepartmentService } from 'src/app/services/department.service';
 
 @Component({
-  selector: 'app-department',
-  templateUrl: './department.component.html',
-  styleUrls: ['./department.component.css']
+  selector: 'app-departmentModal',
+  templateUrl: './departmentModal.component.html',
+  styleUrls: ['./departmentModal.component.css']
 })
-export class DepartmentComponent implements OnInit {
+export class DepartmentModalComponent implements OnInit {
+
 
   departmentForm!: FormGroup;
   submitted = true;
@@ -23,8 +22,7 @@ export class DepartmentComponent implements OnInit {
   constructor(private fb: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private departmentService: DepartmentService,
-    private dialog: MatDialog ) {}
+    private departmentService: DepartmentService) {}
 
 
   ngOnInit() {
@@ -76,20 +74,8 @@ export class DepartmentComponent implements OnInit {
     });
 }
   }
-
-  deleteDepartment(departments: Department): void{
-    this.departmentService.deleteDepartment(departments.DepartmentId)
-    .subscribe(data => {
-      this.departments = this.departments.filter(u => u !== departments);
-    })
-  }
-
-  updateDepartment(departments: Department): void{
-    this.router.navigate(['app-department', departments.DepartmentId])
-  };
-
-  addDepartment() {
-    this.dialog.open(DepartmentModalComponent)
+  addDepartment(): void {
+    this.router.navigate(['app-department']);
   };
 
 }

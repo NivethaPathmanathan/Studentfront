@@ -1,0 +1,55 @@
+.page-header{
+  padding-top:20px;
+justify-content: center;
+color: rgb(0, 48, 0);
+}
+
+
+.charts-wrapper {
+  padding-top: 110px;
+  display: flex;
+  margin: 0 8px;
+  flex-direction: row;
+
+  @media (max-width: $normal) {
+    flex-wrap: wrap;
+  }
+}
+
+.btn{
+  height: 200px;
+  width: 180px;
+  font-size: 18px;
+  background: #32CD32;
+}
+
+.chrt {
+  width: 100%;
+  align-items: center;
+    display: flex;
+    justify-content: center;
+
+  @media (max-width: $normal) {
+    width: 50%;
+  }
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}
+
+.chart {
+  width: 100%;
+  align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+  @media (max-width: $normal) {
+    width: 50%;
+  }
+
+  @media (max-width: $small) {
+    width: 100%;
+  }
+}

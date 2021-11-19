@@ -1,5 +1,42 @@
-<div class="col-md-11, container" style="margin-top: 100px; background-color:#EEEEEE; color: #2a0240; width: 600px;">
-  <h2 class="text-center" style="margin-top: 70px; color:#141e61">{{isEdit ? 'Edit Department' : 'Add Department'}}</h2>
+<div class="row mb-4" style="margin-top: 100px; justify-content: center;">
+  <div class="btnAdd">
+    <button class="btn btn-primary btn" style="color: #EEEEEE;" (click)="addDepartment()"> Add Department</button>
+  </div>
+  <div class="col-lg-4 col-md-10 mb-md-0 mb-4">
+    <div class="card">
+          <div class="card-body px-0 pb-2">
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Id</th>
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Department Name</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let department of departments">
+                <td>{{department.DepartmentId}}</td>
+                <td>{{department.DepartmentName}}</td>
+                <td><button class="btn btn-danger" style="color: #e0d7e6;" (click)="deleteDepartment(department)"> <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+                  <button class="btn btn-primary" style="color: #e0d7e6; margin-left: 20px;" (click)="updateDepartment(department)"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--
+<div class="col-md-11, container" style="margin-top: 100px; background-color:#c6dbc6; color: #2a0240; width: 600px;">
+  <h2 class="text-center" style="margin-top: 70px; color:green">{{isEdit ? 'Edit Department' : 'Add Department'}}</h2>
   <div class="row">
     <div class="col-sm-11">
 
@@ -13,7 +50,7 @@
       </div>
      <br/>
 
-    <button type="Submit" style="background-color:#141e61; color: #e0d7e6;"><b>{{isEdit ? 'Update' : 'Add Department'}}</b></button>
+    <button type="Submit" style="background-color:green; color: #e0d7e6;"><b>{{isEdit ? 'Update' : 'Add Department'}}</b></button>
 
     <br/>
       </form>
@@ -22,4 +59,4 @@
         Form Status: {{ departmentForm.status }}
       </p>
   </div>
-</div>
+</div> -->

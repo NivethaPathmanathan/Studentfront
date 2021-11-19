@@ -1,0 +1,16 @@
+.btnAdd{
+  text-align: end;
+    padding-right: 77px;
+    margin-bottom: inherit;
+  }
+
+  .btn{
+    background-color: green;
+    border-color: green;
+  }
+
+  .btnSubmit{
+    background-color:green;
+    color: #e0d7e6;
+    margin-top: 25px;
+  }

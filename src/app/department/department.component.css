@@ -1,0 +1,11 @@
+.btnAdd{
+  text-align: center;
+  padding-right: px;
+  padding-left: 355px;
+  margin-bottom: inherit;
+  }
+
+  .btn{
+    background-color: green;
+    border-color: green;
+  }
